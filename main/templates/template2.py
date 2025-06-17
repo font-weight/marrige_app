@@ -21,10 +21,10 @@ class Template2(InvitationTemplateBase):
                          self.image_path,
                          self.font_path,
                          font_size = 30,
-                         groom_coord = (100, 100),
-                         bride_coord = (150, 100),
-                         date_coord = (400, 100),
-                         location_coord = (400, 200)
+                         groom_coord = (180, 270),
+                         bride_coord = (320, 350),
+                         date_coord = (70, 600),
+                         location_coord = (400, 600)
                          )
         self.guest = guest
 

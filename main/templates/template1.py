@@ -9,7 +9,7 @@ from main.utils.paths import get_base_dir
 
 
 class Template1(InvitationTemplateBase):
-    guest_coord = (80, 100)
+    guest_coord = (230, 130)
     image_path = os.path.join(get_base_dir(), "main", "templates", "assets", "template1.jpg")
     font_path = os.path.join(get_base_dir(), "main", "templates", "assets", "fonts", "arial.ttf")
 
@@ -22,10 +22,10 @@ class Template1(InvitationTemplateBase):
                          self.image_path,
                          self.font_path,
                          font_size = 30,
-                         groom_coord = (100, 100),
-                         bride_coord = (150, 100),
-                         date_coord = (400, 100),
-                         location_coord = (400, 200)
+                         groom_coord = (180, 370),
+                         bride_coord = (320, 450),
+                         date_coord = (200, 570),
+                         location_coord = (200, 630)
                          )
         self.guest = guest
 
