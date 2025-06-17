@@ -37,6 +37,23 @@ class InvitationManager:
 
 
 
+    # ____________HAS TO BE IMPLEMENTED___________
+    # def choose_template(self, number: int):
+    #     if number == 1:
+    #         self.template = Template1()
+    #         return 1
+    #     elif number == 2:
+    #         self.template = Template2()
+    #         return 1
+    #
+    #     else:
+    #         return 0
+
+
+    # ________________HAS TO BE IMPLEMENTED___________
+    def generate_all_invitations(self):
+        pass
+
 
 
 
