@@ -101,6 +101,24 @@ class Interface:
         print("\n")
 
 
+    def choose_template(self):
+        while True:
+            result = input("\033[1;33mChoose one of the templates [1/2]: \033[0m")
+            if not result.isdigit():
+                print("\033[1;31mIt has to be a number [1/2]!\033[0m\n\n")
+                continue
+
+            if self.manager.choose_template(int(result)):
+                print(f"\033[1;32mThe {result} template was successfully chosen\033[0m\n\n")
+                break
+            else:
+                print("\033[1;31mIt has to be 1 or 2!\033[0m\n\n")
+
+
+
+
+
+
 
 if __name__ == "__main__":
     manager = InvitationManager()
