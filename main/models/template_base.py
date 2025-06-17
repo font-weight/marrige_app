@@ -1,6 +1,6 @@
 # the base for templates, it's for polymorphism :))
 
-from wedding_info import WeddingInfo
+from main.models.wedding_info import WeddingInfo
 from abc import ABC, abstractmethod
 from PIL import Image, ImageDraw, ImageFont
 
@@ -37,7 +37,6 @@ class InvitationTemplateBase(ABC):
         draw.text(self.location_coord, self.wedding_info.location, font=font, fill='black')
 
         return {"image": image, "draw": draw, "font": font}
-
 
     @abstractmethod
     def generate_invitation(self):
