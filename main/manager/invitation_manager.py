@@ -29,6 +29,13 @@ class InvitationManager:
         # returns a list if all the names of the guests
         return [guest.full_name for guest in self.guests]
 
+    def set_wedding_info(self, bride_name: str,
+                         groom_name: str,
+                         date: str,
+                         location: str):
+        self.wedding_info = WeddingInfo(bride_name, groom_name, date, location)
+
+
 
 
 
