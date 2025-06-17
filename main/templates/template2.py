@@ -33,6 +33,13 @@ class Template2(InvitationTemplateBase):
         data = self.fill_in_wedding_info()
         image = data["image"]
 
-        path = f"invites/template1_{self.guest.full_name}.jpg"
+        path = os.path.join(get_base_dir(), "main", "invites",
+                            f"template2_{self.guest.full_name.replace(" ", "_")}.jpg")
+
+        # create dir if there is no one
+        dir_path = os.path.dirname(path)
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+
         image.save(path)
         return path

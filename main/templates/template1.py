@@ -39,7 +39,8 @@ class Template1(InvitationTemplateBase):
         draw.text(self.guest_coord, self.guest.full_name, font=font, fill='black')
 
 
-        path = os.path.join(get_base_dir(), "main", "invites", f"template1_{self.guest.full_name.replace(" ", "_")}.jpg")
+        path = os.path.join(get_base_dir(), "main", "invites",
+                            f"template1_{self.guest.full_name.replace(" ", "_")}.jpg")
 
         # create dir if there is no one
         dir_path = os.path.dirname(path)
