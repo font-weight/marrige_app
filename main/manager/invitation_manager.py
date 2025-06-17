@@ -1,53 +1,63 @@
 # Here is the basic logic of the application
 from main.models.guest import Guest
 from main.models.wedding_info import WeddingInfo
+from main.templates.template1 import Template1
+from main.templates.template2 import Template2
 
 
 class InvitationManager:
     def __init__(self):
         self.guests = []
         self.wedding_info = WeddingInfo() # create for now empty WeddingInfo object
+        self.template = Template1 # default template will be number 1
 
-        # _________________________THIS MUST BE IMPLEMENTED________________
-        # self.template = Template1() # default template will be number 1
-
-    def add_guest(self, full_name: str):
+    def add_guest(self, full_name: str) -> bool:
         # add guests to the list
+        if len(full_name) > 40:
+            return False
         self.guests.append(Guest(full_name))
+        return True
 
 
     # ______________HAS TO BE TESTED_____________________
-    def remove_guest(self, full_name: str):
+    def remove_guest(self, full_name: str) -> bool:
         for guest in self.guests:
             if full_name == guest.full_name:
                 self.guests.remove(guest)
-                return 1
+                return True
 
-        return 0
+        return False
 
-    def view_guests(self):
+
+
+    def view_guests(self) -> list:
         # returns a list if all the names of the guests
         return [guest.full_name for guest in self.guests]
+
 
     def set_wedding_info(self, bride_name: str,
                          groom_name: str,
                          date: str,
-                         location: str):
+                         location: str) -> bool:
+        if (len(bride_name) > 40) or (len(groom_name) > 40) or (len(date) > 20) or (len(location) > 60):
+            return False
+
         self.wedding_info = WeddingInfo(bride_name, groom_name, date, location)
+        return True
 
 
 
-    # ____________HAS TO BE IMPLEMENTED___________
-    # def choose_template(self, number: int):
-    #     if number == 1:
-    #         self.template = Template1()
-    #         return 1
-    #     elif number == 2:
-    #         self.template = Template2()
-    #         return 1
-    #
-    #     else:
-    #         return 0
+
+    def choose_template(self, number: int) -> bool:
+        if number == 1:
+            self.template = Template1
+            return True
+        elif number == 2:
+            self.template = Template2
+            return True
+
+        else:
+            return False
 
 
     # ________________HAS TO BE IMPLEMENTED___________
