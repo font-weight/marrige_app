@@ -17,3 +17,5 @@ used PYTEST here, unit tests are it the "tests" dir.
 
 
 It was a pleasure working on this project, I enjoyed it so much!
+
+And I know that I made a mistake in the name of the project :)
