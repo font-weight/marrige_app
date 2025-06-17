@@ -5,13 +5,13 @@ from main.models.wedding_info import WeddingInfo
 
 import os
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+from main.utils.paths import get_base_dir
 
 
 class Template1(InvitationTemplateBase):
     guest_coord = (80, 100)
-    image_path = os.path.join(BASE_DIR, "main", "templates", "assets", "template1.jpg")
-    font_path = os.path.join(BASE_DIR, "main", "templates", "assets", "fonts", "arial.ttf")
+    image_path = os.path.join(get_base_dir(), "main", "templates", "assets", "template1.jpg")
+    font_path = os.path.join(get_base_dir(), "main", "templates", "assets", "fonts", "arial.ttf")
 
     def __init__(self,
                  guest: Guest,
@@ -39,7 +39,7 @@ class Template1(InvitationTemplateBase):
         draw.text(self.guest_coord, self.guest.full_name, font=font, fill='black')
 
 
-        path = os.path.join(BASE_DIR, "main", "invites", f"template1_{self.guest.full_name.replace(" ", "_")}.jpg")
+        path = os.path.join(get_base_dir(), "main", "invites", f"template1_{self.guest.full_name.replace(" ", "_")}.jpg")
 
         # create dir if there is no one
         dir_path = os.path.dirname(path)
