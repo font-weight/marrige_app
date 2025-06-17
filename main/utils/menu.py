@@ -87,7 +87,7 @@ class Interface:
 
     def remove_guest(self):
         if self.manager.remove_guest(input("\033[1;33mWrite guest's full name to delete: \033[0m")):
-            print("\033[1;32mThe guest was successfully deletes\033[0m\n\n")
+            print("\033[1;32mThe guest was successfully deleted\033[0m\n\n")
         else:
             print("\033[1;31mThere is no such guest!\033[0m\n\n")
 
@@ -115,7 +115,12 @@ class Interface:
                 print("\033[1;31mIt has to be 1 or 2!\033[0m\n\n")
 
 
-
+    def generate_invitations(self):
+        result = self.manager.generate_all_invitations()
+        if result:
+            print(f"\033[1;32m{result} invitations were successfully created\033[0m\n\n")
+        else:
+            print("\033[1;31mOops. Looks like you forgot to add some information. Try again!\033[0m\n\n")
 
 
 
@@ -127,7 +132,7 @@ if __name__ == "__main__":
     while True:
         print(interface.title)
         interface.show_the_choices()
-        if(interface.get_answer() == 0):
+        if interface.get_answer() == 0:
             break
 
 
