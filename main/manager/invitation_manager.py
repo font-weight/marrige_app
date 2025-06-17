@@ -13,13 +13,17 @@ class InvitationManager:
 
     def add_guest(self, full_name: str) -> bool:
         # add guests to the list
-        if len(full_name) > 40:
+        if len(full_name) > 30:
             return False
+
+        if not all(c.isalpha() or c.isspace() or c.isdigit() for c in full_name):
+            return False
+
         self.guests.append(Guest(full_name))
         return True
 
 
-    # ______________HAS TO BE TESTED_____________________
+
     def remove_guest(self, full_name: str) -> bool:
         for guest in self.guests:
             if full_name == guest.full_name:
@@ -35,11 +39,11 @@ class InvitationManager:
         return [guest.full_name for guest in self.guests]
 
 
-    def set_wedding_info(self, bride_name: str,
-                         groom_name: str,
-                         date: str,
-                         location: str) -> bool:
-        if (len(bride_name) > 40) or (len(groom_name) > 40) or (len(date) > 20) or (len(location) > 60):
+    def set_wedding_info(self, bride_name: str = "",
+                         groom_name: str = "",
+                         date: str = "",
+                         location: str = "") -> bool:
+        if (len(bride_name) > 25) or (len(groom_name) > 25) or (len(date) > 20) or (len(location) > 50):
             return False
 
         self.wedding_info = WeddingInfo(bride_name, groom_name, date, location)
@@ -64,10 +68,12 @@ class InvitationManager:
         if not self.guests or not self.wedding_info:
             return False
 
+        count = 0
         for guest in self.guests:
-            self.template(guest, self.wedding_info)
+            self.template(guest, self.wedding_info).generate_invitation()
+            count += 1
 
-        return True
+        return count
 
 
 
