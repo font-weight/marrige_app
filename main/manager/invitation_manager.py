@@ -8,7 +8,7 @@ from main.templates.template2 import Template2
 class InvitationManager:
     def __init__(self):
         self.guests = []
-        self.wedding_info = WeddingInfo() # create for now empty WeddingInfo object
+        self.wedding_info = None # make it for now empty
         self.template = Template1 # default template will be number 1
 
     def add_guest(self, full_name: str) -> bool:
@@ -60,9 +60,15 @@ class InvitationManager:
             return False
 
 
-    # ________________HAS TO BE IMPLEMENTED___________
     def generate_all_invitations(self):
-        pass
+        if not self.guests or not self.wedding_info:
+            return False
+
+        for guest in self.guests:
+            self.template(guest, self.wedding_info)
+
+        return True
+
 
 
 
